@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/TCPServer/.vs/TCPServer/v16
+/UDPClient/.vs/UDPClient/v16
+/UDPServer/.vs/UDPServer/v16
+/UDPClient/UDPClient/Debug
+/UDPServer/UDPServer/Debug
+/UDPServer/Debug
+/TCPServer/Debug
+/UDPClient/Debug

@@ -139,7 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LinuxUDPClient.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="WindowUDPClient.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LinuxUDPClient.h" />
+    <ClInclude Include="WindowUDPClient.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
