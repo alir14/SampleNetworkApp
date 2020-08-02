@@ -11,3 +11,6 @@
 /UDPServer/Debug
 /TCPServer/Debug
 /UDPClient/Debug
+/TCPClient_Linux/.vs/TCPClient_Linux/v16
+/TCPClient_Linux/TCPClient_Linux/bin/x64/Debug
+/TCPClient_Linux/TCPClient_Linux/obj/x64/Debug
