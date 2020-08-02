@@ -1,0 +1,83 @@
+#include <iostream>
+#include <WS2tcpip.h>
+#include <string>
+
+#pragma comment (lib, "ws2_32.lib")
+
+int main()
+{
+	std::cout << "client startrd" << std::endl;
+
+	std::string serverIpAddress = "127.0.0.1";
+	int serverPort = 55000;
+
+	// initialize winsock
+	WSAData wsData;
+	WORD version = MAKEWORD(2, 2);
+
+	int wsOK = WSAStartup(version, &wsData);
+
+	if (wsOK != 0) {
+		std::cerr << "cannot initial winsock" << std::endl;
+		return 0;
+	}
+
+	//create socket
+	SOCKET sendertSocket = socket(AF_INET, SOCK_STREAM, 0);
+	if (sendertSocket == INVALID_SOCKET) {
+		std::cerr << "cannot create socket" << WSAGetLastError() << std::endl;
+		WSACleanup();
+		return -1;
+	}
+
+	// bind ip address and port we want to connect to a socket
+	//instanciate sockaddr structure with values
+	sockaddr_in hint;
+	hint.sin_family = AF_INET;
+	hint.sin_port = htons(serverPort);
+	inet_pton(AF_INET, serverIpAddress.c_str(), &hint.sin_addr);
+
+	//connect to server
+	int isConnected = connect(sendertSocket, (sockaddr*)&hint, sizeof(hint));
+
+	if (isConnected == -1)
+	{
+		std::cerr<< "cannot connect to destination " << WSAGetLastError() << std::endl;
+		closesocket(sendertSocket);
+		WSACleanup();
+		return -2;
+	}
+
+	//Do while to send and receive
+	char buff[4096];
+	std::string userInput;
+
+	do
+	{
+		//prompt the user to enter message and get userinput
+		std::cout << "enter message> " << std::endl;
+		std::getline(std::cin, userInput);
+
+		//send the message
+		if (userInput.size() > 0)
+		{
+			int sendResult = send(sendertSocket, userInput.c_str(), userInput.size() + 1, 0);
+			if (sendResult != SOCKET_ERROR)
+			{
+				// wait for response
+				ZeroMemory(buff, 4096);
+				int byteReceived = recv(sendertSocket, buff, 4096, 0);
+
+				if (byteReceived > 0)
+				{
+					//show response
+					std::cout << "destination> " << std::string(buff, 0, byteReceived) << std::endl;
+				}
+			}
+		}
+	} while (userInput.size() > 0);
+
+	//close everything
+	closesocket(sendertSocket);
+	WSACleanup();
+}

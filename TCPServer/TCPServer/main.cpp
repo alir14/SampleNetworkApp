@@ -71,14 +71,14 @@ void main()
 
 	// loop : accept and echo message back to client
 	int bytesReceived;
-	char buf[4096];
+	char buff[4096];
 
 	while (true)
 	{
-		//memset(buf, 0, 4096);
-		ZeroMemory(buf, 4096);
+		//memset(buff, 0, 4096);
+		ZeroMemory(buff, 4096);
 		//wait for client to sed data
-		bytesReceived = recv(clientSocket, buf, 4096, 0);
+		bytesReceived = recv(clientSocket, buff, 4096, 0);
 		if (bytesReceived == SOCKET_ERROR)
 		{
 			std::cerr << "Error in recv()" << std::endl;
@@ -91,7 +91,9 @@ void main()
 			break;
 		}
 
-		send(clientSocket, buf, bytesReceived + 1, 0);
+		std::cout << std::string(buff, 0, bytesReceived) << std::endl;
+
+		send(clientSocket, buff, bytesReceived + 1, 0);
 	}
 	
 	//close socket
