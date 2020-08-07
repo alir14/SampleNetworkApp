@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bk" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TCPClient.cpp" />
   </ItemGroup>

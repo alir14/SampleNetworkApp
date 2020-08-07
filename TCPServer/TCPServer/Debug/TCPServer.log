@@ -1,4 +1,0 @@
-﻿  Using triplet "x86-windows" from "C:\src\vcpkg\installed\x86-windows\"
-  main.cpp
-C:\Users\alir7\source\repos\TCPServer\TCPServer\main.cpp(7,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  TCPServer.vcxproj -> C:\Users\alir7\source\repos\TCPServer\Debug\TCPServer.exe
