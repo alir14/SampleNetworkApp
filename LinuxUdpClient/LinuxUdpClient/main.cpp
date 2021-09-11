@@ -16,7 +16,7 @@ void error(const char* msg)
 
 int main(int argc, char* argv[])
 {
-    int sockfd, portNo, n;
+    int sockfd, portNo;
     struct sockaddr_in server_addr;
     struct hostent* server;
 
@@ -37,8 +37,8 @@ int main(int argc, char* argv[])
 
     bzero((char*)&server_addr, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
-    bcopy((char*)server->h_addr,(char*)&server_addr.sin_addr.s_addr,server->h_length);
-    //inet_pton(AF_INET, "192.168.1.79", &server_addr.sin_addr);
+    
+    inet_pton(AF_INET, "192.168.1.79", &server_addr.sin_addr);
 
     server_addr.sin_port = htons(portNo);
 
@@ -54,18 +54,6 @@ int main(int argc, char* argv[])
 
     int sendOk = sendto(sockfd, buffer, msgSize, 0, (struct sockaddr*)&server_addr, sizeof(server_addr));
 
-    //n = write(sockfd,buffer, strlen(buffer));
-
-    //if(n < 0)
-    //    error("ERROR writing to socket");
-
-    //bzero(buffer, 256);
-    //n = read(sockfd, buffer, 255);
-
-    //if (n < 0)
-    //     error("ERROR reading from socket");
-
-    //printf("%s\n", buffer);
     close(sockfd);
 
     return 0;

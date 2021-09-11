@@ -21,3 +21,4 @@
 /LinuxUdpClient/.vs/LinuxUdpClient/v16
 /LinuxUdpClient/LinuxUdpClient/bin/ARM64/Debug
 /LinuxUdpClient/LinuxUdpClient/obj
+*.user
