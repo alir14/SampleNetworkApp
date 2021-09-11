@@ -18,3 +18,6 @@
 /TCPClient_Win/Debug
 /TCPClient_Win/TCPClient_Win/Debug
 /TCPHub/.vs/TCPHub/v16
+/LinuxUdpClient/.vs/LinuxUdpClient/v16
+/LinuxUdpClient/LinuxUdpClient/bin/ARM64/Debug
+/LinuxUdpClient/LinuxUdpClient/obj
